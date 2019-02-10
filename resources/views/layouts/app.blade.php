@@ -42,7 +42,11 @@
                             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
                         </li>
                         @endcan
-                        
+                        @can('reservas.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('reservas.index') }}">Reservas</a>
+                        </li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->

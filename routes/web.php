@@ -83,4 +83,14 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('products/{product}/edit', 'ProductController@edit')->name('products.edit')
 		->middleware('permission:products.edit');
+
+	//Reservas
+	Route::get('reservas', 'ReservaController@index')->name('reservas.index')
+		->middleware('permission:reservas.index');
+	Route::get('reservas/{reserva}', 'ReservaController@show')->name('reservas.show')
+		->middleware('permission:reservas.show');
+	Route::get('reservas/{reserva}/edit', 'ReservaController@edit')->name('reservas.edit')
+		->middleware('permission:reservas.edit');
+	Route::delete('reservas/{reserva}', 'ReservasController@destroy')->name('reservas.destroy')
+		->middleware('permission:reservas.destroy');
 });
