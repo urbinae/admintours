@@ -11,6 +11,7 @@
                     <p><strong>Tour</strong>     {{ $reserva->tour }}</p>
                     <p><strong>Fecha</strong>     {{ $reserva->fecha }}</p>
                     <p><strong>Nombre</strong>      {{ $reserva->nombre }} {{ $reserva->apellido }}</p>
+                    <p><strong>Status</strong>      {{ $reserva->estatus }} </p>
                 </div>
             </div>
         </div>

@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
+	
 	//Roles
 	Route::post('roles/store', 'RoleController@store')->name('roles.store')
 		->middleware('permission:roles.create');
@@ -93,4 +94,6 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:reservas.edit');
 	Route::delete('reservas/{reserva}', 'ReservasController@destroy')->name('reservas.destroy')
 		->middleware('permission:reservas.destroy');
+	Route::put('reservas/{reserva}', 'ReservaController@update')->name('reservas.update')
+		->middleware('permission:reservas.edit');
 });

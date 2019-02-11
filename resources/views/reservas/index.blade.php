@@ -15,6 +15,7 @@
                             <tr>
                                 <th width="10px">Fecha</th>
                                 <th>Tour</th>
+                                <th>Estatus</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                         </thead>
@@ -23,6 +24,7 @@
                             <tr>
                                 <td>{{ $reserva->fecha }}</td>
                                 <td>{{ $reserva->tour }}</td>
+                                <td>{{ $reserva->estatus }}</td>
                                 
                                 @can('reservas.show')
                                 <td width="10px">
@@ -31,7 +33,14 @@
                                         ver
                                     </a>
                                 </td>
-                                @endcan                                
+                                @endcan 
+                                @can('reservas.edit')
+                                <td>
+                                    <a href="{{route('reservas.edit', $reserva->id)}}" class="btn btn-sm btn-default">
+                                        Editar
+                                    </a>
+                                </td> 
+                                @endcan
                             </tr>
                             @endforeach
                         </tbody>
