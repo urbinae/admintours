@@ -84,8 +84,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request);
         $user = User::find($id);
-        $user->update($request->all());
+
+        $data = $request->all();
+        //$data['percent'] = $request->percent;
+
+        $user->update($data);
 
         $user->roles()->sync($request->get('roles'));
 
