@@ -11,7 +11,7 @@ $(document).ready(function(){
                 if (e) { 
                 	
                 	$.ajax({
-			            url: url+id,
+			            url: url+"/"+id,
 			            type: 'POST', 
 			            data: {
 			                "id": id,
