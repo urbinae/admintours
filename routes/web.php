@@ -19,6 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::middleware(['auth'])->group(function () {
 	
 	//Roles
@@ -96,4 +108,8 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:reservas.destroy');
 	Route::put('reservas/{reserva}', 'ReservaController@update')->name('reservas.update')
 		->middleware('permission:reservas.edit');
+
+		// Registration Routes...
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
 });
