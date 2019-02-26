@@ -11,13 +11,13 @@ class StatusTableSeeder extends Seeder
      */
     public function run()
     {
-        Status::create([
+        App\Status::create([
             'name'          => 'En proceso',
         ]);
-        Status::create([
+        App\Status::create([
             'name'          => 'Cancelado',
         ]);
-        Status::create([
+        App\Status::create([
             'name'          => 'Aprobado',
         ]);
     }
