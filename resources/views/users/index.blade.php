@@ -46,8 +46,8 @@
                                 @can('users.destroy')
                                 <td width="10px">
                                     {!! Form::open(['route' => ['users.destroy', $user->id], 
-                                    'method' => 'DELETE']) !!}
-                                        <button class="btn btn-sm btn-danger">
+                                    'method' => 'DELETE',  "id" => "form-delete"]) !!}
+                                        <button id="delete-user" class="btn btn-sm btn-danger" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}" data-name="{{ $user->name }}">
                                             Eliminar
                                         </button>
                                     {!! Form::close() !!}
