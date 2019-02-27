@@ -15,6 +15,10 @@
 
     <link rel="stylesheet" href="{{ asset('css/alertify/themes/alertify.core.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/alertify/themes/alertify.default.css') }}" id="toggleCSS" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/datatable/datatables.min.css') }}"/>
+ 
+
+
 </head>
 <body>
     <div id="app">
@@ -48,6 +52,11 @@
                         @can('reservas.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('reservas.index') }}">Reservas</a>
+                        </li>
+                        @endcan
+                        @can('tours.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('tours.index') }}">{{ trans('admintours.tour') }}</a>
                         </li>
                         @endcan
                     </ul>
@@ -104,6 +113,12 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/alertify/lib/alertify.min.js') }}"></script>
     
+
+   <script type="text/javascript" src="{{ asset('js/datatable/pdfmake-0.1.36/pdfmake.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datatable/pdfmake-0.1.36/vfs_fonts.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datatable/datatables.min.js') }}"></script>
+
     <script src="{{ asset('js/custom.js') }}"></script>
+
 </body>
 </html>

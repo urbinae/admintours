@@ -109,7 +109,15 @@ Route::middleware(['auth'])->group(function () {
 	Route::put('reservas/{reserva}', 'ReservaController@update')->name('reservas.update')
 		->middleware('permission:reservas.edit');
 
+		//tour
+	Route::get('tours', 'TourController@index')->name('tours.index')
+		->middleware('permission:tour.index');
+	Route::get('tours/create', 'TourController@create')->name('tours.create')
+		->middleware('permission:tours.create');
+		
 		// Registration Routes...
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
+
+
 });

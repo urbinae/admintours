@@ -16,11 +16,13 @@
                 </div>
 
                 <div class="panel-body">
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover" id="myTable">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th colspan="3">&nbsp;</th>
+                                <th >&nbsp;</th>
+                                <th >&nbsp;</th>
+                                <th >&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	//alerta para borrar usuario
 	$("button#delete-user").click(function(event){
 	    event.preventDefault();
 		var id = $(this).data("id");
@@ -35,5 +36,17 @@ $(document).ready(function(){
 	    	    var error = alertify.error('Cancel');
 	    });
 	});
+
+	//tabla dinamica datatable
+	$('#myTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'print'
+        ],
+        //"url": "dataTables.german.lang"
+        "language": {
+            "url": "/js/datatable/Spanish.json"
+        }
+    } );
 
 });
