@@ -114,6 +114,8 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:tour.index');
 	Route::get('tours/create', 'TourController@create')->name('tours.create')
 		->middleware('permission:tours.create');
+	Route::get('tours/{tour}', 'TourController@show')->name('tours.show')
+		->middleware('permission:tours.show');
 		
 		// Registration Routes...
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');

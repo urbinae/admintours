@@ -20,18 +20,27 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th >&nbsp;</th>
-                                <th >&nbsp;</th>
-                                <th >&nbsp;</th>
+                                <th>Duracion</th>
+                                <th>Zona</th>
+                                <th>Precio ($USD)</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($tours as $tour)
                             <tr>
-                                <td>{{ "var1" }}</td>
-                                <td>{{ "var1" }}</td>
-                                <td>{{ "var1" }}</td>
-                                <td>{{ "var1" }}</td>
+                                <td>{{ $tour->name }}</td>
+                                <td>{{ $tour->duracion  }}</td>
+                                <td>{{ $tour->zona  }}</td>
+                                <td>{{ $tour->precio  }}</td>
+
+                                @can('reservas.show')
+                                <td width="10px">
+                                    <a href="{{ route('tours.show', $tour->id) }}" 
+                                    class="btn btn-sm btn-default">
+                                        ver
+                                    </a>
+                                </td>
+                                @endcan 
                                 
                             @endforeach()    
                             </tr> 

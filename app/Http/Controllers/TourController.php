@@ -39,7 +39,7 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $tour = Tour::find($id);
         $adults = Adults::all();
@@ -47,7 +47,7 @@ class TourController extends Controller
         $infants = Infants::all();
         $buggies = Buggies::all();
         $horarios = Horarios::all();
-        return view('tours.show', compact('tour', 'children', 'infants', 'buggies', 'horarios'));
+        return view('tours.show', compact('tour', 'adults', 'children', 'infants', 'buggies', 'horarios'));
     }
 
     //Adultos, niños, infantes , buggies y horarios
