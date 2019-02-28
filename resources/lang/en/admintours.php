@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'tour' => 'Tures',
+    'tour' => 'Tour',
+    'tours' => 'Tours',
     'create' => 'Crear',
     'name' => 'Nombre',
     'duration' => 'Duración',

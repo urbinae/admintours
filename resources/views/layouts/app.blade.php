@@ -56,7 +56,7 @@
                         @endcan
                         @can('tours.index')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('tours.index') }}">{{ trans('admintours.tour') }}</a>
+                            <a class="nav-link" href="{{ route('tours.index') }}">{{ trans('admintours.tours') }}</a>
                         </li>
                         @endcan
                     </ul>
