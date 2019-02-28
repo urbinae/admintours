@@ -13,7 +13,7 @@ class CrearTableChildren extends Migration
      */
     public function up()
     {
-        Schema::create('children', function (Blueprint $table) {
+        Schema::create('childrens', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('min');
             $table->integer('max');
@@ -34,6 +34,6 @@ class CrearTableChildren extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('children');
+        Schema::dropIfExists('childrens');
     }
 }

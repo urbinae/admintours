@@ -42,11 +42,12 @@ class TourController extends Controller
     public function show(Request $request, $id)
     {
         $tour = Tour::find($id);
-        $adults = Adults::all();
-        $children = Children::all();
-        $infants = Infants::all();
-        $buggies = Buggies::all();
-        $horarios = Horarios::all();
+        $adults = Adults::where('tour_id', $id)->first();
+        //dd($adults);
+        $children = Children::where('tour_id', $id)->first();
+        $infants = Infants::where('tour_id', $id)->first();
+        $buggies = Buggies::where('tour_id', $id)->first();
+        $horarios = Horarios::where('tour_id', $id)->first();
         return view('tours.show', compact('tour', 'adults', 'children', 'infants', 'buggies', 'horarios'));
     }
 

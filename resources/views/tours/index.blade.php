@@ -30,7 +30,7 @@
                             <tr>
                                 <td>{{ $tour->name }}</td>
                                 <td>{{ $tour->duracion  }}</td>
-                                <td>{{ $tour->zona  }}</td>
+                                <td>{{ $tour->zona->name  }}</td>
                                 <td>{{ $tour->precio  }}</td>
 
                                 @can('reservas.show')
