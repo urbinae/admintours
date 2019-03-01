@@ -114,6 +114,8 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:tour.index');
 	Route::get('tours/create', 'TourController@create')->name('tours.create')
 		->middleware('permission:tours.create');
+	Route::post('tours/store', 'TourController@store')->name('tours.store')
+		->middleware('permission:tours.store');
 	Route::get('tours/{tour}', 'TourController@show')->name('tours.show')
 		->middleware('permission:tours.show');
 		

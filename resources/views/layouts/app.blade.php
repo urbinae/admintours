@@ -118,6 +118,7 @@
 <script type="text/javascript" src="{{ asset('js/datatable/pdfmake-0.1.36/vfs_fonts.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/datatable/datatables.min.js') }}"></script>
 
+<script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
 
 </body>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Tour;
 use App\Adults;
 use App\Children;
@@ -50,6 +51,56 @@ class TourController extends Controller
         $horarios = Horarios::where('tour_id', $id)->first();
         return view('tours.show', compact('tour', 'adults', 'children', 'infants', 'buggies', 'horarios'));
     }
+
+    public function store(Request $request){
+
+        $validator = $this->ValidateCreate($request);
+
+        
+
+       Tour::insert([
+          'name' => $request->name,
+          'duracion' => intval($request->duracion),
+          'precio' => intval($request->precio),
+          'short_description' => $request->short_description,
+          'long_description' => $request->long_description,
+          'adults' => intval("1"),
+          'children' => intval("1"),
+          'infants' => intval("1"),
+          'buggies' => intval("1"),
+          'status' => intval("1"),
+          'important' => intval("1"),
+          'buggies' => intval("1"),
+          'days' => intval("1"),
+          'likes' => intval("1"),
+          'fotos' => "asdasd",
+          'zona_id' => intval("1"),
+          'created_at' => date("Y-m-d"),
+          'updated_at' => date("Y-m-d"),
+        ]);
+
+
+    }
+
+    public function ValidateCreate($request)
+    {
+        $this->validate($request,[
+                'name' => 'required',
+                'duracion' => 'required',
+                'precio' => 'required',
+                //'short_description' => 'required',
+                //'long_description' => 'required',
+            ], 
+            [
+                'name.required' => "Nombre es obligatorio", 
+                'duracion.required' => "Duracion es obligatorio", 
+                'precio.required' => "Precio es obligatorio", 
+                //'short_description.required' => "Descripción corta es obligatorio", 
+                //'long_description.required' => "Descripción larga es obligatorio",
+            ]
+        );
+    }
+
 
     //Adultos, niños, infantes , buggies y horarios
     public function add_adults(Request $request)
