@@ -48,7 +48,8 @@ $("#save-tour").click(function(event){
 					$('#long_description').val(editor2.getData());
 
 					var dataString = $('#createTour').serialize();
-
+					console.log(dataString);
+/*
                 	$.ajax({
 			            url: $("#createTour").attr("action"),
 			            type: 'POST', 
@@ -85,6 +86,7 @@ $("#save-tour").click(function(event){
 			            	
 			            }
 			        });
+*/
                 } else {
                     alertify.error("Usted ha cancelado la solicitud");
 	            }
@@ -106,6 +108,14 @@ $("#save-tour").click(function(event){
         }
     } );
 
+	$(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
 
 
 });
