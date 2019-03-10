@@ -109,7 +109,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::put('reservas/{reserva}', 'ReservaController@update')->name('reservas.update')
 		->middleware('permission:reservas.edit');
 
-		//tour
+	//tour
 	Route::get('tours', 'TourController@index')->name('tours.index')
 		->middleware('permission:tour.index');
 	Route::get('tours/create', 'TourController@create')->name('tours.create')
@@ -118,6 +118,18 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:tours.store');
 	Route::get('tours/{tour}', 'TourController@show')->name('tours.show')
 		->middleware('permission:tours.show');
+
+	//cargar zonas
+	Route::get('zonas', 'ZonaController@index')->name('zonas.index')
+		->middleware('permission:zonas.index');
+	Route::get('zonas/create', 'ZonaController@create')->name('zonas.create')
+		->middleware('permission:zonas.create');
+	Route::post('zonas/store', 'ZonaController@store')->name('zonas.store')
+		->middleware('permission:zonas.store');
+	Route::get('zonas/{tour}', 'ZonaController@show')->name('zonas.show')
+		->middleware('permission:zonas.show');
+	Route::post('zonas/update', 'ZonaController@update')->name('zonas.update')
+		->middleware('permission:zonas.update');
 		
 		// Registration Routes...
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');

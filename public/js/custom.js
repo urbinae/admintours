@@ -47,19 +47,25 @@ $("#save-tour").click(function(event){
 					$('#short_description').val(editor.getData());
 					$('#long_description').val(editor2.getData());
 
-					var dataString = $('#createTour').serialize();
-					console.log(dataString);
-/*
-                	$.ajax({
+					var dataString = new FormData($('#createTour')[0]);
+
+					$.ajax({
 			            url: $("#createTour").attr("action"),
 			            type: 'POST', 
 			            data: dataString,
+		                processData: false,
+		                contentType: false,
+		                dataType: 'json',
+		                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
 			            success: function (response)
 			            { 
 			            	$('#createTour')[0].reset();
                     		alertify.success('Tour creada exitosamente');
 			            },error: function (err) {
-
+			            	if (err.status === 200) {
+			            		$('#createTour')[0].reset();
+			            		alertify.success('Tour creada exitosamente');
+			            	}
 			            	if (err.status === 422) {
 		                        $errors = err.responseJSON; //this will get the errors response data.
 		                        //show them somewhere in the markup
@@ -82,11 +88,13 @@ $("#save-tour").click(function(event){
 		                        $('body,html').animate({scrollTop : 0}, 500);
 		                    } else { 
 		                    }
-
 			            	
+			            }, them: function (aa){
+			            	console.log("them");
+			            	console.log(aa);
 			            }
 			        });
-*/
+
                 } else {
                     alertify.error("Usted ha cancelado la solicitud");
 	            }
@@ -96,17 +104,7 @@ $("#save-tour").click(function(event){
 	    });
 	});
 
-	//tabla dinamica datatable
-	$('#myTable').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'print'
-        ],
-        //"url": "dataTables.german.lang"
-        "language": {
-            "url": "/js/datatable/Spanish.json"
-        }
-    } );
+	
 
 	$(".btn-success").click(function(){ 
           var html = $(".clone").html();
@@ -121,30 +119,124 @@ $("#save-tour").click(function(event){
 });
 
 
-//ckeditor de crear tour
-let editor;
-ClassicEditor
-	.create( document.querySelector( '#short_description' ), {
-		toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
-	} )
-	.then( newEditor => {
-        editor = newEditor;
-    } )
-	.catch( err => {
-		console.error( err.stack );
-	}
-);
+//Guardar formulario de crear zona
+$("#save-zona").click(function(event){
+        
+        alertify.confirm("¿Esta seguro que desea guardar esta zona ",
+            function (e) {
+                if (e) { 
+					var dataStringZ = $('#createZonas').serialize();
+					var name = $('#name').val();
+					console.log(name);
+					console.log(dataStringZ);
+					$.ajax({
+			            url: $("#createZonas").attr("action"),
+			            type: 'POST', 
+		                dataType: 'json',
+		                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+			            data: dataStringZ,
+			            success: function (response)
+			            { 
+			            	console.log("susscess");
+			            	$('#createZonas')[0].reset();
+                    		alertify.success('Zona creada exitosamente');
+			            },error: function (err) {
+			            	if (err.status === 200) {
+			            		$('#createZonas')[0].reset();
+                    			alertify.success('Tour creada exitosamente');
+			            	}
+			            	if (err.status === 422) {
+		                        $errors = err.responseJSON; //this will get the errors response data.
+		                        //show them somewhere in the markup
+		                        //e.g
+		                        errorsHtml = '<div class="alert alert-danger" role="alert">';
+		                        errorsHtml += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><ul>';
 
-ClassicEditor
-	.create( document.querySelector( '#long_description' ), {
-		toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
-	} )
-	.then( newEditor2 => {
-        editor2 = newEditor2;
-    } )
-	.catch( err => {
-		console.error( err.stack );
-	}
-);
+		                        $.each($errors.errors, function (key, value) {
+		                            errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
+		                        });
+		                        errorsHtml += '</ul></di>';
 
+		                        $('#form-errors').html(errorsHtml); //appending to a <div id="form-errors"></div> inside form
 
+		                        window.setTimeout(function () {
+		                            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+		                                $(this).remove();
+		                            });
+		                        }, 4000);
+		                        $('body,html').animate({scrollTop : 0}, 500);
+		                    } else { 
+		                    	console.log(err);
+		                    }
+			            	
+			            }
+			        });
+
+                } else {
+                    alertify.error("Usted ha cancelado la solicitud");
+	            }
+	        },
+	        function () {
+	    	    var error = alertify.error('Cancel');
+	    });
+	});
+
+//Guardar formulario de crear zona
+$("#update-zona").click(function(event){
+        
+        alertify.confirm("¿Esta seguro que desea actualizar esta zona? ",
+            function (e) {
+                if (e) { 
+					var dataStringZ = $('#updateZonas').serialize();
+					$.ajax({
+			            url: $("#updateZonas").attr("action"),
+			            type: 'POST', 
+		                dataType: 'json',
+		                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+			            data: dataStringZ,
+			            success: function (response)
+			            { 
+			            	//$('#updateZonas')[0].reset();
+                    		alertify.success('Zona actualizada exitosamente');
+			            },error: function (err) {
+			            	if (err.status === 200) {
+			            		//$('#updateZonas')[0].reset();
+                    			alertify.success('Zona actualizada exitosamente');
+			            	}
+			            	if (err.status === 422) {
+		                        $errors = err.responseJSON; //this will get the errors response data.
+		                        //show them somewhere in the markup
+		                        //e.g
+		                        errorsHtml = '<div class="alert alert-danger" role="alert">';
+		                        errorsHtml += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><ul>';
+
+		                        $.each($errors.errors, function (key, value) {
+		                            errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
+		                        });
+		                        errorsHtml += '</ul></di>';
+
+		                        $('#form-errors').html(errorsHtml); //appending to a <div id="form-errors"></div> inside form
+
+		                        window.setTimeout(function () {
+		                            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+		                                $(this).remove();
+		                            });
+		                        }, 4000);
+		                        $('body,html').animate({scrollTop : 0}, 500);
+		                    } else { 
+		                    	console.log(err);
+		                    }
+			            	
+			            }
+			        });
+
+                } else {
+                    alertify.error("Usted ha cancelado la solicitud");
+	            }
+	        },
+	        function () {
+	    	    var error = alertify.error('Cancel');
+	    });
+	});
+
+$('.js-example-basic-multiple').select2();

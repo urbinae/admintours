@@ -17,7 +17,7 @@ return [
     'tours' => 'Tours',
     'create' => 'Crear',
     'name' => 'Nombre',
-    'duration' => 'Duración',
+    'duration' => 'Duración en horas',
     'precio' => 'Precio',
     'short_descripcion' => 'Descripción corta',
     'long_descripcion' => 'Descripción larga',
@@ -29,4 +29,7 @@ return [
     'important' => 'Importante',
     'days' => 'Días',
     'likes' => 'likes',
+    'cargarzonas' => 'Cargar zonas',
+    'Listarzonas' => 'Listar zonas',
+    'selectzona' => 'Seleccionar zonas',
 ];

@@ -16,8 +16,13 @@
     <link rel="stylesheet" href="{{ asset('css/alertify/themes/alertify.core.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/alertify/themes/alertify.default.css') }}" id="toggleCSS" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/datatable/datatables.min.css') }}"/>
- 
 
+    <link href="{{ asset('css/select2/select2.min.css') }}" rel="stylesheet" />
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/alertify/lib/alertify.min.js') }}"></script>
 
 </head>
 <body>
@@ -57,6 +62,12 @@
                         @can('tours.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('tours.index') }}">{{ trans('admintours.tours') }}</a>
+                        </li>
+                        @endcan
+
+                        @can('zonas.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('zonas.index') }}">{{ trans('admintours.cargarzonas') }}</a>
                         </li>
                         @endcan
                     </ul>
@@ -108,17 +119,17 @@
         @yield('content')
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/alertify/lib/alertify.min.js') }}"></script>
+    
     
 
-   <script type="text/javascript" src="{{ asset('js/datatable/pdfmake-0.1.36/pdfmake.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/datatable/pdfmake-0.1.36/vfs_fonts.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/datatable/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/datatable/pdfmake-0.1.36/pdfmake.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/datatable/pdfmake-0.1.36/vfs_fonts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/datatable/datatables.min.js') }}"></script>
 
-<script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+
+
+    <script src="{{ asset('js/select2/select2.min.js') }}"></script>
+
     <script src="{{ asset('js/custom.js') }}"></script>
 
 </body>

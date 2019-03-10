@@ -15,24 +15,22 @@ class CrearTableTours extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('duracion');
-            $table->integer('precio');
-            $table->string('short_description');
-            $table->string('long_description');
-            $table->boolean('adults');
-            $table->boolean('children');
-            $table->boolean('infants');
-            $table->boolean('buggies');
-            $table->boolean('status');
-            $table->boolean('important');
-            $table->integer('days');
-            $table->integer('likes');
-            $table->string('fotos');
-
-            $table->integer('zona_id')->unsigned();
+            $table->string('name')->nullable();
+            $table->integer('duracion')->nullable();
+            $table->integer('precio')->nullable();
+            $table->string('short_description')->nullable();
+            $table->string('long_description')->nullable();
+            $table->boolean('adults')->nullable();
+            $table->boolean('children')->nullable();
+            $table->boolean('infants')->nullable();
+            $table->boolean('buggies')->nullable();
+            $table->boolean('status')->nullable();
+            $table->boolean('important')->nullable();
+            $table->integer('days')->nullable();
+            $table->integer('likes')->nullable();
+            $table->string('fotos')->nullable();        
+            $table->integer('zona_id')->unsigned()->nullable();
             $table->foreign('zona_id')->references('id')->on('zonas');
-
             $table->timestamps();
         });
     }

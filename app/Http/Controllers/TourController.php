@@ -10,6 +10,7 @@ use App\Children;
 use App\Infants;
 use App\Buggies;
 use App\Horarios;
+use App\Zona;
 
 class TourController extends Controller
 {
@@ -31,7 +32,8 @@ class TourController extends Controller
      */
     public function create()
     {
-        return view('tours.create');
+        $zonas = Zona::all();
+        return view('tours.create', compact("zonas"));
     }
     
     /**
@@ -53,32 +55,39 @@ class TourController extends Controller
     }
 
     public function store(Request $request){
-
+        $data = array();
         $validator = $this->ValidateCreate($request);
 
-        
+        if($request->hasfile('fotos'))
+         {
 
-       Tour::insert([
-          'name' => $request->name,
-          'duracion' => intval($request->duracion),
-          'precio' => intval($request->precio),
-          'short_description' => $request->short_description,
-          'long_description' => $request->long_description,
-          'adults' => intval("1"),
-          'children' => intval("1"),
-          'infants' => intval("1"),
-          'buggies' => intval("1"),
-          'status' => intval("1"),
-          'important' => intval("1"),
-          'buggies' => intval("1"),
-          'days' => intval("1"),
-          'likes' => intval("1"),
-          'fotos' => "asdasd",
-          'zona_id' => intval("1"),
-          'created_at' => date("Y-m-d"),
-          'updated_at' => date("Y-m-d"),
-        ]);
+            foreach($request->file('fotos') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/images/', $name);  
+                $data[] = $name;  
+            }
+         }
 
+          Tour::insert([
+            'name' => $request->name,
+            'duracion' => intval($request->duracion),
+            'precio' => intval($request->precio),
+            'short_description' => $request->short_description,
+            'long_description' => $request->long_description,
+            'adults' => intval($request->adults),
+            'children' => intval($request->children),
+            'infants' => intval($request->infants),
+            'buggies' => intval($request->buggies),
+            'status' => intval($request->status),
+            'important' => intval($request->important),
+            'days' => intval($request->days),
+            'likes' => intval("1"),
+            'fotos' => $this->array_to_str($data),
+            'zona_id' => intval($request->zona_id),
+            'created_at' => date("Y-m-d"),
+            'updated_at' => date("Y-m-d"),
+          ]);
 
     }
 
@@ -88,15 +97,21 @@ class TourController extends Controller
                 'name' => 'required',
                 'duracion' => 'required',
                 'precio' => 'required',
-                //'short_description' => 'required',
-                //'long_description' => 'required',
+                'short_description' => 'required',
+                'long_description' => 'required',
+                'days' => 'required',
+                'fotos' => 'required',
+                'zona_id' => 'required',
             ], 
             [
                 'name.required' => "Nombre es obligatorio", 
                 'duracion.required' => "Duracion es obligatorio", 
                 'precio.required' => "Precio es obligatorio", 
-                //'short_description.required' => "Descripción corta es obligatorio", 
-                //'long_description.required' => "Descripción larga es obligatorio",
+                'short_description.required' => "Descripción corta es obligatorio", 
+                'long_description.required' => "Descripción larga es obligatorio",
+                'days.required' => "Campo dias es obligatorio",
+                'fotos.required' => "Fotos son obligatorias",
+                'zona_id.required' => "Zona es obligatoria",
             ]
         );
     }
@@ -149,4 +164,17 @@ class TourController extends Controller
         return redirect()->route('tours.show');
     }
 
+    public function array_to_str($arrays){
+      $paramarrays = '';
+      $larrays = count($arrays);
+      $i = 1;
+      foreach ($arrays as $array) {
+        $paramarrays .= $array;
+        if($i < $larrays){
+          $paramarrays .= ',';
+        }
+        $i++;
+      }
+      return $paramarrays;
+    }
 }
