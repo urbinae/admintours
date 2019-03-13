@@ -64,10 +64,19 @@ class TourController extends Controller
             foreach($request->file('fotos') as $image)
             {
                 $name=$image->getClientOriginalName();
-                $image->move(public_path().'/images/', $name);  
+                $image->move(public_path().'/images/'.$request->name.'/', $name);  
                 $data[] = $name;  
             }
          }
+
+
+
+            foreach($request->days_array as $day)
+            {
+                
+                $days[] = $day;  
+            }
+        
 
           Tour::insert([
             'name' => $request->name,
@@ -81,7 +90,7 @@ class TourController extends Controller
             'buggies' => intval($request->buggies),
             'status' => intval($request->status),
             'important' => intval($request->important),
-            'days' => intval($request->days),
+            'days' => $this->array_to_str($days),
             'likes' => intval("1"),
             'fotos' => $this->array_to_str($data),
             'zona_id' => intval($request->zona_id),
@@ -99,7 +108,7 @@ class TourController extends Controller
                 'precio' => 'required',
                 'short_description' => 'required',
                 'long_description' => 'required',
-                'days' => 'required',
+                'days_array' => 'required',
                 'fotos' => 'required',
                 'zona_id' => 'required',
             ], 
@@ -109,7 +118,7 @@ class TourController extends Controller
                 'precio.required' => "Precio es obligatorio", 
                 'short_description.required' => "Descripción corta es obligatorio", 
                 'long_description.required' => "Descripción larga es obligatorio",
-                'days.required' => "Campo dias es obligatorio",
+                'days_array.required' => "Campo dias es obligatorio",
                 'fotos.required' => "Fotos son obligatorias",
                 'zona_id.required' => "Zona es obligatoria",
             ]

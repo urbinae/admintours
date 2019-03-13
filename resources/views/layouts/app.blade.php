@@ -19,10 +19,7 @@
 
     <link href="{{ asset('css/select2/select2.min.css') }}" rel="stylesheet" />
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/alertify/lib/alertify.min.js') }}"></script>
+    
 
 </head>
 <body>
@@ -52,11 +49,6 @@
                         @can('users.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
-                        </li>
-                        @endcan
-                        @can('reservas.index')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reservas.index') }}">Reservas</a>
                         </li>
                         @endcan
                         @can('tours.index')
@@ -128,6 +120,11 @@
 
 
 
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/alertify/lib/alertify.min.js') }}"></script>
     <script src="{{ asset('js/select2/select2.min.js') }}"></script>
 
     <script src="{{ asset('js/custom.js') }}"></script>

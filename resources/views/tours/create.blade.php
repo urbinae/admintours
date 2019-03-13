@@ -104,13 +104,19 @@
                             
                         </div>
                         
-
                         <div class="form-group">
                             <label>{{ trans('admintours.days') }}</label>
-                            <div class="input-field"> 
-                                {!! Form::number('days', null, ['class'=>'form-control', 'id' => 'days', ]) !!}
-                            </div>
+                            <select class="days-multiple form-control" name="days_array[]" multiple>
+                              <option value="0">Domingo</option>
+                              <option value="1">Lunes</option>
+                              <option value="2">Martes</option>
+                              <option value="3">Miercoles</option>
+                              <option value="4">Jueves</option>
+                              <option value="5">Viernes</option>
+                              <option value="6">Sabado</option>
+                            </select>
                         </div>
+                            
                         
                         <div class="input-group control-group increment" >
                           <input type="file" name="fotos[]" class="form-control fotos">

@@ -18,17 +18,19 @@ class CrearTableTours extends Migration
             $table->string('name')->nullable();
             $table->integer('duracion')->nullable();
             $table->integer('precio')->nullable();
-            $table->string('short_description')->nullable();
-            $table->string('long_description')->nullable();
+            $table->string('short_description', 100)->nullable();
+            $table->text('long_description')->nullable();
             $table->boolean('adults')->nullable();
             $table->boolean('children')->nullable();
             $table->boolean('infants')->nullable();
             $table->boolean('buggies')->nullable();
             $table->boolean('status')->nullable();
             $table->boolean('important')->nullable();
-            $table->integer('days')->nullable();
+            $table->string('days')->nullable();//dias disponibles: 1=lunes, 0=domingo
             $table->integer('likes')->nullable();
-            $table->string('fotos')->nullable();        
+            $table->string('foto', 20)->nullable();//foto principal
+            $table->string('fotos')->nullable();//galeria de fotos
+                    
             $table->integer('zona_id')->unsigned()->nullable();
             $table->foreign('zona_id')->references('id')->on('zonas');
             $table->timestamps();

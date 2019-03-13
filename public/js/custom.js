@@ -37,8 +37,8 @@ $(document).ready(function(){
 	    });
 	});
 
-//Guardar formulario de crear tour
-$("#save-tour").click(function(event){
+	//Guardar formulario de crear tour
+	$("#save-tour").click(function(event){
         
         alertify.confirm("¿Esta seguro que desea guardar este tour ",
             function (e) {
@@ -114,9 +114,6 @@ $("#save-tour").click(function(event){
       $("body").on("click",".btn-danger",function(){ 
           $(this).parents(".control-group").remove();
       });
-
-
-});
 
 
 //Guardar formulario de crear zona
@@ -237,6 +234,11 @@ $("#update-zona").click(function(event){
 	        function () {
 	    	    var error = alertify.error('Cancel');
 	    });
+
+	    $('.days-multiple').select2();
 	});
 
-$('.js-example-basic-multiple').select2();
+$('.days-multiple').select2();
+
+});
+

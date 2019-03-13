@@ -27,7 +27,7 @@ return [
     'buggies' => 'Buggies',
     'status' => 'Activar',
     'important' => 'Importante',
-    'days' => 'Días',
+    'days' => 'Días disponibles',
     'likes' => 'likes',
     'cargarzonas' => 'Cargar zonas',
     'Listarzonas' => 'Listar zonas',
