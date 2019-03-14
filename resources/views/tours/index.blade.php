@@ -20,7 +20,7 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Duracion</th>
+                                <th>Duracion (hrs)</th>
                                 <th>Zona</th>
                                 <th>Precio ($USD)</th>
                             </tr>

@@ -131,9 +131,20 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('zonas/update', 'ZonaController@update')->name('zonas.update')
 		->middleware('permission:zonas.update');
 		
-		// Registration Routes...
+
+    //Adultos
+	Route::post('adults/store', 'AdultController@store')->name('adults.store')
+		->middleware('permission:adults.store');
+	Route::post('adults/update', 'AdultController@update')->name('adults.update')
+		->middleware('permission:adults.update');
+
+	//Children
+	Route::post('children/store', 'ChildrenController@store')->name('children.store')
+		->middleware('permission:children.store');
+	Route::post('children/update', 'ChildrenController@update')->name('children.update')
+		->middleware('permission:children.update');
+
+	// Registration Routes...
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
-
-
 });

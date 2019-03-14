@@ -45,13 +45,36 @@ class TourController extends Controller
     public function show(Request $request, $id)
     {
         $tour = Tour::find($id);
+
+        $days = explode(',', $tour->days);
+        $days_string = '';
+        foreach ($days as $day) {
+            if ($day == 0) $d = 'Domingo';
+            if ($day == 1) $d = 'Lunes';
+            if ($day == 2) $d = 'Martes';
+            if ($day == 3) $d = 'Miercoles';
+            if ($day == 4) $d = 'Jueves';
+            if ($day == 5) $d = 'Viernes';
+            if ($day == 6) $d = 'Sabado';
+
+            $days_string = $days_string.$d.', ';
+        }
         $adults = Adults::where('tour_id', $id)->first();
-        //dd($adults);
+        if ($adults == null) $adults = new Adults();
+
         $children = Children::where('tour_id', $id)->first();
+        if ($children == null) $children = new Children();
+        
         $infants = Infants::where('tour_id', $id)->first();
+        if ($infants == null) $infants = new Infants();
+
         $buggies = Buggies::where('tour_id', $id)->first();
+        if ($buggies == null) $buggies = new Buggies();
+
         $horarios = Horarios::where('tour_id', $id)->first();
-        return view('tours.show', compact('tour', 'adults', 'children', 'infants', 'buggies', 'horarios'));
+        if ($horarios == null) $horarios = new Horarios();
+
+        return view('tours.show', compact('tour', 'adults', 'children', 'infants', 'buggies', 'horarios', 'days_string'));
     }
 
     public function store(Request $request){
@@ -129,13 +152,13 @@ class TourController extends Controller
     //Adultos, niños, infantes , buggies y horarios
     public function add_adults(Request $request)
     {
-        //$adults = new Adults();
+        $adult = new Adults();
 
-        /*$adults->tour_id = $request->input('tour_id');
-        $adults->max = $request->input('max');
-        $adults->min = $request->input('min');
-        $adults->price = $request->input('price');*/
-        $data = $request->all();
+        $adult->tour_id = $request->input('tourid');
+        $adult->max = $request->input('max');
+        $adult->min = $request->input('min');
+        $adult->price = $request->input('price');
+
         $adult = Adults::create($data);
         
         return redirect()->route('tours.show');
