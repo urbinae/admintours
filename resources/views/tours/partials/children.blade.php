@@ -1,11 +1,11 @@
 @if($tour->children)
 <div class="col col-md-4">
-    @if(empty((array)$children))
+    @if(!empty((array)$children))
     <div class="panel panel-info">
       <div class="panel-heading">Ninos
         @can('children.edit')
         <div class="btn-group">
-          <button type="button" class="btn btn-info pull-rigth" data-toggle="modal" data-target="#edit-modal">
+          <button type="button" class="btn btn-info pull-rigth" data-toggle="modal" data-target="#edit-modal-children">
           <i class="fa fa-edit">Editar</i>
           </button>
         </div>
@@ -22,7 +22,7 @@
       <div class="panel-heading">Ninos
           @can('children.create')
           <div class="btn-group">
-            <button type="button" class="btn btn-info pull-rigth" data-toggle="modal" data-target="#create-modal">
+            <button type="button" class="btn btn-info pull-rigth" data-toggle="modal" data-target="#create-modal-children">
             <i class="fa fa-edit">Editar</i>
             </button>
           </div>
@@ -36,7 +36,7 @@
     </div>
     @endif
 </div>
-<div class="modal fade" id="create-modal">
+<div class="modal fade" id="create-modal-children">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -58,6 +58,14 @@
               {!!Form::number('max',null,['id'=>'max', 'class'=>'form-control', 'placeholder'=>'Cantidad maxima', 'required'=>'required'])!!}
             </div>
             <div class="form-group">
+              <label for="age_from">Edad desde</label> 
+              {!!Form::number('age_from',null,['id'=>'age_from', 'class'=>'form-control', 'placeholder'=>'Cantidad maxima', 'required'=>'required'])!!}
+            </div>
+            <div class="form-group">
+              <label for="age_to">Edad hasta</label> 
+              {!!Form::number('age_to',null,['id'=>'age_to', 'class'=>'form-control', 'placeholder'=>'Cantidad maxima', 'required'=>'required'])!!}
+            </div>
+            <div class="form-group">
               <label for="cost">Costo</label> 
               <input type="text" class="form-control" name="cost" placeholder="">
             </div>            
@@ -71,7 +79,7 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="edit-modal">
+<div class="modal fade" id="edit-modal-children">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -95,7 +103,15 @@
             <div class="form-group">
               <label for="cost">Costo</label> 
               {!!Form::text('cost',null,['id'=>'cost', 'class'=>'form-control', 'placeholder'=>'Costo por nino', 'required'=>'required'])!!}
-            </div>            
+            </div> 
+            <div class="form-group">
+              <label for="age_from">Edad desde</label> 
+              {!!Form::number('age_from',null,['id'=>'age_from', 'class'=>'form-control', 'placeholder'=>'Cantidad maxima', 'required'=>'required'])!!}
+            </div>
+            <div class="form-group">
+              <label for="age_to">Edad hasta</label> 
+              {!!Form::number('age_to',null,['id'=>'age_to', 'class'=>'form-control', 'placeholder'=>'Cantidad maxima', 'required'=>'required'])!!}
+            </div>           
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
