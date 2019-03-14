@@ -23,10 +23,14 @@ class ChildrenController extends Controller
     public function update(Request $request, $id)
     {
         $children = Children::find($id);
-        $data = $request->all();
-        $children->update($data);
+        $children->max = $request->input('max');
+        $children->min = $request->input('min');
+        $children->cost = $request->input('cost');
+        $children->age_from = $request->input('age_from');
+        $children->age_to = $request->input('age_to');
+        $children->update();
 
-        return redirect()->route('tours.show', $children->id)
+        return redirect()->route('tours.show', $children->tour_id)
             ->with('info', 'Registro guardado con éxito');
     }
 }

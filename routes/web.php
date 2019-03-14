@@ -128,21 +128,33 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:zonas.store');
 	Route::get('zonas/{tour}', 'ZonaController@show')->name('zonas.show')
 		->middleware('permission:zonas.show');
-	Route::post('zonas/update', 'ZonaController@update')->name('zonas.update')
+	Route::post('zonas/{update}', 'ZonaController@update')->name('zonas.update')
 		->middleware('permission:zonas.update');
 		
 
     //Adultos
 	Route::post('adults/store', 'AdultController@store')->name('adults.store')
 		->middleware('permission:adults.store');
-	Route::post('adults/update', 'AdultController@update')->name('adults.update')
+	Route::put('adults/{id}', 'AdultController@update')->name('adults.update')
 		->middleware('permission:adults.update');
 
 	//Children
 	Route::post('children/store', 'ChildrenController@store')->name('children.store')
 		->middleware('permission:children.store');
-	Route::post('children/update', 'ChildrenController@update')->name('children.update')
+	Route::put('children/{id}', 'ChildrenController@update')->name('children.update')
 		->middleware('permission:children.update');
+
+	//Infantes
+	Route::post('infants/store', 'InfantController@store')->name('infants.store')
+		->middleware('permission:infants.store');
+	Route::put('infants/{id}', 'InfantController@update')->name('infants.update')
+		->middleware('permission:infants.update');
+
+	//Buggies
+	Route::post('buggies/store', 'BuggieController@store')->name('buggies.store')
+		->middleware('permission:buggies.store');
+	Route::put('buggies/{id}', 'uggieController@update')->name('buggies.update')
+		->middleware('permission:buggies.update');
 
 	// Registration Routes...
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
