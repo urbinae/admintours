@@ -18,6 +18,8 @@
                         @include('tours.partials.adults')
                         @include('tours.partials.children')
                         @include('tours.partials.infants')
+                    </div>
+                    <div class="row">
                         @include('tours.partials.buggies')
                     </div>
                 </div>

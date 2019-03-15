@@ -1,6 +1,6 @@
 @if($tour->adults)
 <div class="col col-md-4">
-    @if(isset($adults))
+    @if(!empty($adults))
     <div class="panel panel-info">
       <div class="panel-heading">Adultos
         @can('adults.edit')
@@ -36,6 +36,7 @@
     </div>
     @endif
 </div>
+@if(empty($adults))
 <div class="modal fade" id="create-modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -71,6 +72,7 @@
     </div>
   </div>
 </div>
+@else
 <div class="modal fade" id="edit-modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -106,4 +108,5 @@
     </div>
   </div>
 </div>
+@endif
 @endif

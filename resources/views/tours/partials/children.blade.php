@@ -1,6 +1,6 @@
 @if($tour->children)
 <div class="col col-md-4">
-    @if(!empty((array)$children))
+    @if(!empty($children))
     <div class="panel panel-info">
       <div class="panel-heading">Ninos
         @can('children.edit')
@@ -23,7 +23,7 @@
           @can('children.create')
           <div class="btn-group">
             <button type="button" class="btn btn-info pull-rigth" data-toggle="modal" data-target="#create-modal-children">
-            <i class="fa fa-edit">Editar</i>
+            <i class="fa fa-edit">Nuevo</i>
             </button>
           </div>
           @endcan
@@ -36,6 +36,7 @@
     </div>
     @endif
 </div>
+@if(empty($children))
 <div class="modal fade" id="create-modal-children">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -79,6 +80,7 @@
     </div>
   </div>
 </div>
+@else
 <div class="modal fade" id="edit-modal-children">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -122,4 +124,5 @@
     </div>
   </div>
 </div>
+@endif
 @endif
