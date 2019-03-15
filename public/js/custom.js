@@ -59,12 +59,12 @@ $(document).ready(function(){
 		                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
 			            success: function (response)
 			            { 
-			            	$('#createTour')[0].reset();
-                    		alertify.success('Tour creada exitosamente');
+			            	//alertify.success('Tour creada exitosamente');
+			            	window.location.href = "/tours";
 			            },error: function (err) {
 			            	if (err.status === 200) {
-			            		$('#createTour')[0].reset();
-			            		alertify.success('Tour creada exitosamente');
+			            		//alertify.success('Tour creada exitosamente');
+			            		window.location.href = "/tours";
 			            	}
 			            	if (err.status === 422) {
 		                        $errors = err.responseJSON; //this will get the errors response data.
