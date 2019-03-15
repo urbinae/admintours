@@ -158,31 +158,6 @@
 
 <script type="text/javascript">
 
-//ckeditor de crear tour
-let editor;
-ClassicEditor
-    .create( document.querySelector( '#short_description' ), {
-        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
-    } )
-    .then( newEditor => {
-        editor = newEditor;
-    } )
-    .catch( err => {
-        console.error( err.stack );
-    }
-);
-
-ClassicEditor
-    .create( document.querySelector( '#long_description' ), {
-        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
-    } )
-    .then( newEditor2 => {
-        editor2 = newEditor2;
-    } )
-    .catch( err => {
-        console.error( err.stack );
-    }
-);
 
 </script>
 
