@@ -135,7 +135,7 @@
                         <div class="form-group">
                             <label>{{ trans('admintours.selectzona') }}</label>
                             <div class="input-field">
-                                <select class="js-example-basic-simple form-control" name="zona_id[]" id="zona_id" >
+                                <select class="js-example-basic-simple form-control" name="zona_id" id="zona_id" >
                                     @forelse ($zonas as $zona)
                                         <option value="{{ $zona->id }}">{{ $zona->name }}</option>
                                     @empty

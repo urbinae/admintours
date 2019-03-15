@@ -91,8 +91,6 @@ class TourController extends Controller
                 
                 $days[] = $day;  
             }
-        
-
           Tour::insert([
             'name' => $request->name,
             'duracion' => intval($request->duracion),
