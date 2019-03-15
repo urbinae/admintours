@@ -131,7 +131,7 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:zonas.update');
 		
 
-    //Adultos
+     //Adultos
 	Route::post('adults/store', 'AdultController@store')->name('adults.store')
 		->middleware('permission:adults.store');
 	Route::put('adults/{id}', 'AdultController@update')->name('adults.update')
@@ -150,9 +150,9 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:infants.update');
 
 	//Buggies
-	Route::post('buggies/store', 'BuggieController@store')->name('buggies.store')
+	Route::post('buggies/store', 'BuggiesController@store')->name('buggies.store')
 		->middleware('permission:buggies.store');
-	Route::put('buggies/{id}', 'uggieController@update')->name('buggies.update')
+	Route::put('buggies/{id}', 'BuggiesController@update')->name('buggies.update')
 		->middleware('permission:buggies.update');
 
 	// Registration Routes...
