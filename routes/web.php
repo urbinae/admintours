@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'FrontpageController@index');
+Route::get('tures_front/{id}', 'FrontpageController@tures_front');
 
 Auth::routes();
 

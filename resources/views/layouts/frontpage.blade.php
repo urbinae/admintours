@@ -16,6 +16,7 @@
     <link href="{{ asset('frontpage/css/style.css') }}" type="text/css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{{ asset('frontpage/css/lightbox.css') }}">
     <link href="{{ asset('frontpage/css/animate.css') }}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ asset('frontpage/css/custom.css') }}" rel="stylesheet" type="text/css" media="all">
     <!-- //Custom Theme files -->
     <!-- js -->
     <script src="{{ asset('frontpage/js/jquery-1.11.1.min.js') }}"></script> 
@@ -235,33 +236,11 @@
     <div id="portfolio" class="portfolio">
         <div class="container">
             <h3 class="title wow fadeInDown animated" data-wow-delay=".5s">Portfolio</h3>
-            <div class="sap_tabs">          
-                <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-                    <ul class="resp-tabs-list wow fadeInUp animated" data-wow-delay=".7s">
-                        <li class="resp-tab-item"><span>All</span></li>
-                        <li class="resp-tab-item"><span>Children</span></li>
-                        <li class="resp-tab-item"><span>Vacation</span></li>
-                        <li class="resp-tab-item"><span>HoneyMoon</span></li>
-                        <li class="resp-tab-item"><span>Celebrations</span></li>                    
-                    </ul>   
-                    <div class="clearfix"> </div>   
-                    <div class="resp-tabs-container">
-                        
-                        <div class="tab-1 resp-tab-content">
-                            <div class="tab_img">
-                                <div class="container">
+            
+            
                                 @yield('content')
-                                <div class="clearfix"> </div>
-                                </div>
-                            </div>
-                              
-                        </div>
-                        
-                        
-                    </div>                      
-                </div>
-            </div>
-        </div>
+                                
+
     </div>
     <!--//portfolio-->
     <!--twitter-->  
@@ -413,6 +392,17 @@
             };
             
             $().UItoTop({ easingType: 'easeOutQuart' });
+            
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(".zonas").click(function(){
+            var id = $(this).data("id");
+            $.get( "tures_front/"+id, function( data ) {
+              $( "#tures-front" ).html( data );
+              console.log(id);
+            });
             
         });
     </script>
