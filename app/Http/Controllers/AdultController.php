@@ -29,7 +29,7 @@ class AdultController extends Controller
         $adult->cost = $request->input('cost');
         $adult->update();
 
-        return redirect()->route('tours.show', $adult->id)
+        return redirect()->route('tours.show', $adult->tour_id)
             ->with('info', 'Registro guardado con éxito');
     }
 }

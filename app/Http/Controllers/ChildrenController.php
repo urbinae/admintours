@@ -14,6 +14,8 @@ class ChildrenController extends Controller
         $children->max = $request->input('max');
         $children->min = $request->input('min');
         $children->cost = $request->input('cost');
+        $children->age_from = $request->input('age_from');
+        $children->age_to = $request->input('age_to');
 
         if ($children->save()) {
         	return redirect()->route('tours.show', $children->tour_id);

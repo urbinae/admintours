@@ -60,19 +60,11 @@ class TourController extends Controller
             $days_string = $days_string.$d.', ';
         }
         $adults = Adults::where('tour_id', $id)->first();
-        if ($adults == null) $adults = new Adults();
-
         $children = Children::where('tour_id', $id)->first();
-        if ($children == null) $children = new Children();
-        
         $infants = Infants::where('tour_id', $id)->first();
-        if ($infants == null) $infants = new Infants();
-
-        $buggies = Buggies::where('tour_id', $id)->first();
-        if ($buggies == null) $buggies = new Buggies();
-
+        $buggies = Buggies::where('tour_id', $id)->get();
+        //dd($buggies);
         $horarios = Horarios::where('tour_id', $id)->first();
-        if ($horarios == null) $horarios = new Horarios();
 
         return view('tours.show', compact('tour', 'adults', 'children', 'infants', 'buggies', 'horarios', 'days_string'));
     }
