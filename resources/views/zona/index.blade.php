@@ -32,9 +32,9 @@
 
                                 @can('zonas.show')
                                 <td width="">
-                                    <a href="{{ route('zonas.show', encrypt($zona->id)) }}" 
+                                    <a href="{{ route('zonas.show', $zona->id) }}" 
                                     class="btn btn-sm btn-default">
-                                        ver
+                                        Editar
                                     </a>
                                     <a href="" 
                                     class="btn btn-sm btn-default">

@@ -59,7 +59,7 @@ class ZonaController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $zona = Zona::find(decrypt($id));
+        $zona = Zona::find($id);
         return view('zona.show', compact('zona'));
     }
 

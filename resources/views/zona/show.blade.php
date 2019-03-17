@@ -6,10 +6,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('admintours.cargarzonas') }} </div>
+                <div class="panel-heading">Editar </div>
 
-                <div class="panel-body">                    
-                    {{ Form::open(['route' => 'zonas.update', "id" => "updateZonas", "name" => "updateZonas"]) }}
+                <div class="panel-body"> 
+                    {!! Form::model($zona, ['route' => ['zonas.update', $zona->id],
+                    'method' => 'PUT']) !!}
                         <div id="form-errors"></div>
                         <div class="form-group">
                             {!!Form::hidden('id', $zona->id)!!}
