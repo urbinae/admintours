@@ -19,7 +19,11 @@ class CrearTableTours extends Migration
             $table->integer('duracion')->nullable();
             $table->integer('precio')->nullable();
             $table->string('short_description', 100)->nullable();
-            $table->text('long_description', 500)->nullable();
+            $table->text('long_description')->nullable();
+            $table->text('include')->nullable();//Lo que incluye el tour
+            $table->text('restrictions')->nullable();//Restricciones
+            $table->text('no_forget')->nullable();//No olvidar
+            $table->text('consider')->nullable();// Cosas a considerar
             $table->boolean('adults')->nullable();
             $table->boolean('children')->nullable();
             $table->boolean('infants')->nullable();
