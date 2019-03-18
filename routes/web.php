@@ -14,6 +14,8 @@
 Route::get('/front', 'FrontpageController@index');
 Route::get('tures_front/{id}', 'FrontpageController@tures_front');
 
+Route::get('tour/detail/{id}', 'FrontpageController@detail');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

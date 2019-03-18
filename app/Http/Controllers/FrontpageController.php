@@ -31,4 +31,8 @@ class FrontpageController extends Controller
         }
         return view('frontpage.tures_front', compact('tours'));
     }
+
+    public function detail($id){
+        return view('frontpage.tures_detail');
+    }
 }
