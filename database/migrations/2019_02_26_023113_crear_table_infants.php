@@ -19,7 +19,7 @@ class CrearTableInfants extends Migration
             $table->integer('max');
 
             $table->integer('tour_id')->unsigned();
-            $table->foreign('tour_id')->references('id')->on('tours');
+            $table->foreign('tour_id')->references('id')->on('tours')->onDelete("cascade");
             $table->timestamps();
         });
     }
