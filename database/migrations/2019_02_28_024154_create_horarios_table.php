@@ -18,7 +18,7 @@ class CreateHorariosTable extends Migration
             $table->string('hour');
 
             $table->integer('tour_id')->unsigned();
-            $table->foreign('tour_id')->references('id')->on('tours');
+            $table->foreign('tour_id')->references('id')->on('tours')->onDelete("cascade");
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class CrearTableTours extends Migration
             $table->integer('duracion')->nullable();
             $table->integer('precio')->nullable();
             $table->string('short_description', 100)->nullable();
-            $table->text('long_description')->nullable();
+            $table->text('long_description', 500)->nullable();
             $table->boolean('adults')->nullable();
             $table->boolean('children')->nullable();
             $table->boolean('infants')->nullable();
@@ -32,7 +32,7 @@ class CrearTableTours extends Migration
             $table->string('fotos')->nullable();//galeria de fotos
                     
             $table->integer('zona_id')->unsigned()->nullable();
-            $table->foreign('zona_id')->references('id')->on('zonas');
+            $table->foreign('zona_id')->references('id')->on('zonas')->onDelete("cascade");
             $table->timestamps();
         });
     }
