@@ -16,6 +16,8 @@ class CrearTablaZonas extends Migration
         Schema::create('zonas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug')->nullable();//cadena unica
+            $table->boolean('status')->nullable();//visible o no
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ class CrearTableTours extends Migration
             $table->text('long_description')->nullable();
             $table->boolean('status')->nullable();
             $table->string('foto', 20)->nullable();//foto principal
-            $table->string('fotos')->nullable();//galeria de fotos
+            $table->string('slug')->nullable();//cadena unica
                     
             $table->integer('zona_id')->unsigned()->nullable();
             $table->foreign('zona_id')->references('id')->on('zonas')->onDelete("cascade");

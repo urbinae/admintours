@@ -34,8 +34,8 @@ class ZonaController extends Controller
 
           Zona::insert([
             'name' => $request->name,
-            'created_at' => date("Y-m-d"),
-            'updated_at' => date("Y-m-d"),
+            'created_at' => date(),
+            'updated_at' => date(),
           ]);
           
     }

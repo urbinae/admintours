@@ -17,6 +17,8 @@ class CrearTableInfants extends Migration
             $table->increments('id');
             $table->integer('min');
             $table->integer('max');
+            $table->integer('cost')->default(0);//cero
+            $table->boolean('status')->nullable();//visible o no
 
             $table->integer('tour_id')->unsigned();
             $table->foreign('tour_id')->references('id')->on('tours')->onDelete("cascade");

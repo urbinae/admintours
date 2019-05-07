@@ -22,7 +22,7 @@ class CrearTableModalidad extends Migration
             $table->text('long_description')->nullable();
             $table->text('include')->nullable();//Lo que incluye el tour
             $table->text('restrictions')->nullable();//Restricciones
-            $table->text('no_forget')->nullable();//No olvidar
+            $table->text('noforget')->nullable();//No olvidar
             $table->text('consider')->nullable();// Cosas a considerar
             $table->boolean('adults')->nullable();
             $table->boolean('children')->nullable();
@@ -34,6 +34,7 @@ class CrearTableModalidad extends Migration
             $table->string('foto', 20)->nullable();//foto principal
             $table->string('fotos')->nullable();//galeria de fotos
             $table->string('keywords')->nullable();//para filtros de busqueda
+            $table->string('slug')->nullable();//cadena unica
                     
             $table->integer('tour_id')->unsigned()->nullable();
             $table->foreign('tour_id')->references('id')->on('tours')->onDelete("cascade");
