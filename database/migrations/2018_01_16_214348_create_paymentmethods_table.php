@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTableStatus extends Migration
+class CreatePaymentMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CrearTableStatus extends Migration
      */
     public function up()
     {
-        Schema::create('status', function (Blueprint $table) {
+        Schema::create('payment_methods', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('description');
+            $table->boolean('status')->nullable();//visible o no
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CrearTableStatus extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status');
+        Schema::dropIfExists('payment_methods');
     }
 }

@@ -16,7 +16,7 @@ class CreateHorariosTable extends Migration
         Schema::create('horarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('hour');
-
+            $table->boolean('status')->nullable();//visible o no
             $table->integer('tour_id')->unsigned();
             $table->foreign('tour_id')->references('id')->on('tours')->onDelete("cascade");
             $table->timestamps();

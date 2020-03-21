@@ -20,6 +20,7 @@ class CrearTableChildren extends Migration
             $table->integer('age_from');
             $table->integer('age_to');
             $table->integer('cost');
+            $table->boolean('status')->nullable();//visible o no
 
             $table->integer('tour_id')->unsigned();
             $table->foreign('tour_id')
