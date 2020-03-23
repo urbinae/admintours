@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">                    
-                    Sistema de gestion de WingdingTravel
+                    Sistema de gestion de Tours
                 </div>
             </div>
         </div>

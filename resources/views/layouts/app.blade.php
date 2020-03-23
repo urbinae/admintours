@@ -38,7 +38,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        WingdingTravel
+                        Tours
                     </a>
                 </div>
 
